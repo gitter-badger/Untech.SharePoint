@@ -26,7 +26,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 		public Type ContextType { get; private set; }
 	}
 
-	internal class ContextMap<TContext> :  IMetaContextProvider
+	public class ContextMap<TContext> : IMetaContextProvider
 		where TContext : ISpContext
 	{
 		public MetaContext GetMetaContext()
@@ -40,7 +40,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 		}
 	}
 
-	internal class ListPart: IMetaListProvider
+	public class ListPart : IMetaListProvider
 	{
 		public ListPart Title(string title)
 		{
@@ -51,7 +51,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 	}
 
 
-	internal class ContentTypeMap<TEntity> : IMetaContentTypeProvider
+	public class ContentTypeMap<TEntity> : IMetaContentTypeProvider
 	{
 
 		public FieldPart Field<T>(Expression<Func<TEntity, T>> property)
@@ -61,7 +61,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 
 	}
 
-	internal class FieldPart : IMetaFieldProvider
+	public class FieldPart : IMetaFieldProvider
 	{
 		public FieldPart InternalName(string internalName)
 		{
