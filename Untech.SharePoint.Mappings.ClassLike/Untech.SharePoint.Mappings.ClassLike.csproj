@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassLikeContextMapping.cs" />
+    <Compile Include="ContentTypeMap.cs" />
+    <Compile Include="FieldPart.cs" />
+    <Compile Include="ListPart.cs" />
     <Compile Include="MappingsExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
