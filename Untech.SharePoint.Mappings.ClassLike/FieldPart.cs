@@ -38,7 +38,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 			return this;
 		}
 
-		public MetaField GetMetaField(MetaContentType parent)
+		MetaField IMetaFieldProvider.GetMetaField(MetaContentType parent)
 		{
 			var internalName = string.IsNullOrEmpty(_internalName) ? _member.Name : _internalName;
 			return new MetaField(parent, _member, internalName)

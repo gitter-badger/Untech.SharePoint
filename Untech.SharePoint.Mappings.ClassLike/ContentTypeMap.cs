@@ -15,7 +15,12 @@ namespace Untech.SharePoint.Mappings.ClassLike
 		public ContentTypeMap()
 		{
 			_fieldParts = new Container<MemberInfo, FieldPart>();
-		} 
+		}
+
+		public void ContentTypeId(string contentTypeId)
+		{
+			throw new NotImplementedException();
+		}
 
 		public FieldPart Field<T>(Expression<Func<TEntity, T>> property)
 		{
@@ -26,7 +31,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 			return _fieldParts.Resolve(member);
 		}
 
-		public MetaContentType GetMetaContentType(MetaList parent)
+		MetaContentType IMetaContentTypeProvider.GetMetaContentType(MetaList parent)
 		{
 			return new MetaContentType(parent, typeof(TEntity), _fieldParts.Select(n => n.Value).ToList());
 		}
