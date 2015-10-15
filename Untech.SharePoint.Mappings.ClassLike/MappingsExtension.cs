@@ -8,7 +8,8 @@ namespace Untech.SharePoint.Mappings.ClassLike
 		public static IMappingSource<TContext> ClassLike<TContext>(this Common.Mappings.Mappings mappings, ContextMap<TContext> contextMap)
 		   where TContext : ISpContext
 		{
-			return new ClassLikeMappingSource<TContext>(contextMap);
+			contextMap.Validate();
+			return new MappingSource<TContext>(contextMap);
 		}
 	}
 }

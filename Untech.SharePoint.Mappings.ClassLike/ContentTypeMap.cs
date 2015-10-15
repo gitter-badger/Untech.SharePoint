@@ -11,6 +11,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 	public class ContentTypeMap<TEntity> : IMetaContentTypeProvider
 	{
 		private readonly Container<MemberInfo, FieldPart> _fieldParts;
+		private string _contentTypeId;
 
 		public ContentTypeMap()
 		{
@@ -19,7 +20,7 @@ namespace Untech.SharePoint.Mappings.ClassLike
 
 		public void ContentTypeId(string contentTypeId)
 		{
-			throw new NotImplementedException();
+			_contentTypeId = contentTypeId;
 		}
 
 		public FieldPart Field<T>(Expression<Func<TEntity, T>> property)
@@ -33,7 +34,10 @@ namespace Untech.SharePoint.Mappings.ClassLike
 
 		MetaContentType IMetaContentTypeProvider.GetMetaContentType(MetaList parent)
 		{
-			return new MetaContentType(parent, typeof(TEntity), _fieldParts.Select(n => n.Value).ToList());
+			return new MetaContentType(parent, typeof(TEntity), _fieldParts.Select(n => n.Value).ToList())
+			{
+				Id = _contentTypeId
+			};
 		}
 	}
 }

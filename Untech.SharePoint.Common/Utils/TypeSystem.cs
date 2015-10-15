@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Untech.SharePoint.Common.Utils
 {
-	internal static class TypeSystem
+	public static class TypeSystem
 	{
 		internal static bool IsNullableType(Type type)
 		{
@@ -14,7 +14,7 @@ namespace Untech.SharePoint.Common.Utils
 			return !type.IsValueType || IsNullableType(type);
 		}
 		
-		internal static Type GetMemberType(MemberInfo member)
+		public static Type GetMemberType(MemberInfo member)
 		{
 			var fieldInfo = member as FieldInfo;
 			if (fieldInfo != null) return fieldInfo.FieldType;

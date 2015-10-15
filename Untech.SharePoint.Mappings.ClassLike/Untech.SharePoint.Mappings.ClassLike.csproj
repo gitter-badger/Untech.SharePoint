@@ -45,11 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassLikeContextMapping.cs" />
+    <Compile Include="MappingSource.cs" />
     <Compile Include="ContentTypeMap.cs" />
     <Compile Include="ContextMap.cs" />
     <Compile Include="FieldPart.cs" />
-    <Compile Include="ListPart.cs" />
     <Compile Include="MappingsExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
