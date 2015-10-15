@@ -5,10 +5,10 @@ namespace Untech.SharePoint.Mappings.ClassLike
 {
 	public static class MappingsExtension
 	{
-		public static IMappingSource<TContext> ClassLike<TContext>(this Common.Mappings.Mappings mappings, ContextMap contextMap)
+		public static IMappingSource<TContext> ClassLike<TContext>(this Common.Mappings.Mappings mappings, ContextMap<TContext> contextMap)
 		   where TContext : ISpContext
 		{
-			return new ClassLikeMappingSource<TContext>();
+			return new ClassLikeMappingSource<TContext>(contextMap);
 		}
 	}
 }

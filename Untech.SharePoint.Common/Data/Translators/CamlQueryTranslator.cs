@@ -123,7 +123,7 @@ namespace Untech.SharePoint.Common.Data.Translators
 
 		private IFieldConverter GetConverter(MemberInfo member)
 		{
-			
+			throw new NotImplementedException();
 		}
 	}
 }

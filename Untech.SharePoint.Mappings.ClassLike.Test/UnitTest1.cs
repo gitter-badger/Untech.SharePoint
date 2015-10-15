@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Untech.SharePoint.Common.Data;
 
 namespace Untech.SharePoint.Mappings.ClassLike.Test
 {
@@ -29,6 +29,37 @@ namespace Untech.SharePoint.Mappings.ClassLike.Test
 			Field(n => n.String1).InternalName("STRING1").TypeAsString("Text");
 			Field(n => n.String2).InternalName("Title").TypeAsString("Text");
 			Field(n => n.String3).TypeAsString("Note");
+		}
+	}
+
+	public class SecondEntityMap : ContentTypeMap<SimpleEntity>
+	{
+		public SecondEntityMap()
+		{
+			ContentTypeId("0x01");
+
+			Field(n => n.String1).InternalName("LALA").TypeAsString("Text");
+			Field(n => n.String2).InternalName("HEHE").TypeAsString("Text");
+			Field(n => n.String3).TypeAsString("WOW");
+		}
+	}
+
+	public class MySpContext : ISpContext
+	{
+		public ISpList<SimpleEntity> List1 { get; set; }
+		public ISpList<SimpleEntity> List2ContentType1 { get; set; }
+		public ISpList<SimpleEntity> List2ContentType2 { get; set; }
+	}
+
+	public class MySpContextMap : ContextMap<MySpContext>
+	{
+		public MySpContextMap()
+		{
+			List("List1").ContentType(n => n.List1, new SimpleEntityMap());
+
+			List("List2")
+				.ContentType(n => n.List2ContentType1, new SimpleEntityMap())
+				.ContentType(n => n.List2ContentType2, new SecondEntityMap());
 		}
 	}
 

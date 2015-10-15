@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ClassLikeContextMapping.cs" />
     <Compile Include="ContentTypeMap.cs" />
+    <Compile Include="ContextMap.cs" />
     <Compile Include="FieldPart.cs" />
     <Compile Include="ListPart.cs" />
     <Compile Include="MappingsExtension.cs" />

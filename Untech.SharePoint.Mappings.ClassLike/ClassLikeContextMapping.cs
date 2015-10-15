@@ -11,32 +11,23 @@ namespace Untech.SharePoint.Mappings.ClassLike
 	internal class ClassLikeMappingSource<TContext> : IMappingSource<TContext>
 		where TContext : ISpContext
 	{
+		private readonly ContextMap<TContext> _contextMap;
+
+		public ClassLikeMappingSource(ContextMap<TContext> contextMap)
+		{
+			_contextMap = contextMap;
+		}
 
 		public MetaContext GetMetaContext()
 		{
-			throw new NotImplementedException();
+			return ((IMetaContextProvider) _contextMap).GetMetaContext();
 		}
 
 		public string GetListTitleFromContextMember(MemberInfo member)
 		{
-			throw new NotImplementedException();
+			return _contextMap.MemberListPartMap.Resolve(member).ListTitle;
 		}
 
-		public Type ContextType { get; private set; }
+		public Type ContextType { get { return typeof (TContext); } }
 	}
-
-	public class ContextMap<TContext> : IMetaContextProvider
-		where TContext : ISpContext
-	{
-		public MetaContext GetMetaContext()
-		{
-			throw new NotImplementedException();
-		}
-
-		public void List<TEntity>(Expression<Func<TContext, ISpList<TEntity>>> property, ContentTypeMap<TEntity> contentType)
-		{
-			throw new NotImplementedException();
-		}
-	}
-
 }
